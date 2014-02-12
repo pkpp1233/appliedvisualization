@@ -31,17 +31,17 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-// ****** Slight Adjustment Here: we changed d3.json to d3.csv
 d3.csv("teams.csv", function(graph) {
 
-  // ****** New Code Starts: convert from csv to required format
    var nodes = {};
    var links = [];
    var source;
    var target;
 
    graph.forEach(function (d) {
+    // ****** New Code Starts: add a minimum link value criteria
     if (+d.value >= 10){
+    // ****** New Code Ends: add a minimum link value criteria
       if (!nodes[d.source]) {
           nodes[d.source] = {name: d.source, group: d.groupsource};
       }
@@ -57,29 +57,30 @@ d3.csv("teams.csv", function(graph) {
 
     nodes = d3.values(nodes);
 
-  // ****** New Code Ends: convert from csv to required format
-
   force
       .nodes(nodes)
       .links(links)
       .start();
 
-  var thick = d3.scale.linear()
-            .domain([
-              d3.min(links, function (d) {
-                return d.value
-              }),
-              d3.max(links, function (d) {
-                return d.value
-              })
-            ])
-            .range([0.5,5]);
+
+  // ****** New Code Starts: add a scale for link thickness
+    var thick = d3.scale.linear()
+              .domain([
+                d3.min(links, function (d) {
+                  return d.value
+                }),
+                d3.max(links, function (d) {
+                  return d.value
+                })
+              ])
+              .range([0.5,5]);
+  // ****** New Code Ends: add a scale for link thickness
 
   var link = svg.selectAll(".link")
       .data(links)
     .enter().append("line")
       .attr("class", "link")
-      .style("stroke-width", function(d) { return thick(d.value); });
+      .style("stroke-width", function(d) { return thick(d.value); }); // *** update this line to use thickness scale
 
   var node = svg.selectAll(".node")
       .data(nodes)

@@ -31,10 +31,9 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-// ****** Slight Adjustment Here: we changed d3.json to d3.csv
+// ****** Now we changed the input file from miserables to teams
 d3.csv("teams.csv", function(graph) {
 
-  // ****** New Code Starts: convert from csv to required format
    var nodes = {};
    var links = [];
    var source;
@@ -54,8 +53,6 @@ d3.csv("teams.csv", function(graph) {
    });
 
     nodes = d3.values(nodes);
-
-  // ****** New Code Ends: convert from csv to required format
 
   force
       .nodes(nodes)
