@@ -1,15 +1,31 @@
-1) What is this magical world that is: http://bl.ocks.org/mbostock?
+1) What is this magical world that is: http://bl.ocks.org/mbostock ???
+
 2) Let's make a force-directed graph: http://bl.ocks.org/mbostock/4062045
-  a) Copy code directly into index.html
+  a) Copy code directly into a local force_v1.html
   b) Copy json directly into miserables.json
   c) Run python -m SimpleHTTPServer
-  d) Go to localhost:8000/index.html
+  d) Go to localhost:8000/force_v1.html
   e) It works!
+
 3) But who has json files? Everyone has spreadsheets. Let's edit this visualization to input a csv file.
-  a) We start with miserables.csv. Open in Excel and take a look.
-  b) We write the csv to original json version conversion.
-  b) Then we figure out how to go from a standard Excel format to the one we'd find in miserables (pivot table).
-4) Did we just build something that can make a force graph out of ANYTHING?
-5) OK fine let's learn a bit about force graphs.
-6) Let's try to throw in another dataset!
-7) Now we're off with our own data!
+  a) Open miserables.csv in Excel and take a look
+  b) Let's convert this csv structure into what our code expects. Console.log() is our friend.
+  c) --optional: Then we figure out how to go from a standard Excel format to the one we'd find in miserables (pivot table or grafly).
+
+4) Did we just build the most flexible force graph ever? Let's try with amazing NBA data. Doesn't work! Looks like we do need to learn some d3.
+  a) Color: https://github.com/mbostock/d3/wiki/Ordinal-Scales
+  b) Force: https://github.com/mbostock/d3/wiki/Force-Layout
+  c) Data Binding: http://mbostock.github.io/d3/tutorial/circle.html
+
+5) Now we're off! Let's spend the rest of the time building bl.ocks.org visualizations with our own data. Here are recommended blocks:
+  a) Pie Chart: http://bl.ocks.org/mbostock/3887235
+  b) Bar Chart: http://bl.ocks.org/mbostock/7452541
+  c) Line Chart: http://bl.ocks.org/mbostock/3884955
+  d) Area With Brushing (fancy): http://bl.ocks.org/mbostock/1667367
+  e) Parallel Coordinates (fancy): http://bl.ocks.org/mbostock/7586334
+
+6) Next Steps (Go deeper with javascript and d3):
+  a) Scott Murray is the man: http://alignedleft.com/tutorials/d3/
+  b) d3noob.org is great
+  c) Learn from existing frameworks: http://nvd3.org, http://code.shutterstock.com/rickshaw/, http://d3-generator.com/, http://tenxer.github.io/xcharts/
+  d) Go wild
